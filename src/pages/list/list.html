@@ -1,0 +1,32 @@
+<ion-header no-border>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Tini Diary</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngFor="let post of posts">
+   <ion-card>
+    <ion-card-header>
+      <ion-item>
+      <ion-avatar>
+        <img src="{{post.author.avatar_url}}" />
+      </ion-avatar>
+      <h2>{{post.title}}</h2>
+      <small>{{post.author.first_name}} {{post.author.last_name}}</small>
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content style="max-height: 200px;">
+      <h4>
+        {{post.content}}
+      </h4>
+    </ion-card-content>
+   </ion-card>
+  </ion-list>
+  <div *ngIf="selectedItem" padding>
+   
+  </div>
+</ion-content>

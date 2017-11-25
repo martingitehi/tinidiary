@@ -1,0 +1,8 @@
+{
+  "name": "Tini",
+  "app_id": "53dfa8d9",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
