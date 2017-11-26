@@ -34,12 +34,23 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
-  secondary:  #32db64,
-  danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #222
-);
+  primary:    #2196F3,
+ //  hot: #0D47A1,
+   hot: rgb(27, 26, 26),
+   bright: darkorange,
+   secondary:  #333,
+   danger:     #D50000,
+   light:      #fff,
+   dark:       #000,
+   grey: grey,
+   deepblue: #0D47A1
+ );
+ 
+ $button-md-box-shadow: none;
+ $button-md-box-shadow-activated: none;
+ $button-ios-border-radius: 5px;
+ $button-md-border-radius: 5px;
+ $button-md-text-transform: none;
 
 
 // App iOS Variables

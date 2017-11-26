@@ -1,0 +1,27 @@
+<ion-header no-border>
+  <ion-navbar color="light">
+    <button ion-button menuToggle>
+      <ion-icon name="menu" color="dark"></ion-icon>
+    </button>
+    <ion-title>
+      <small>{{post.title}}
+        <br> {{post.date | date }}
+      </small>
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button clear icon-only>
+        <ion-icon name="more" color="dark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content id="cards">
+  <ion-card id="ion-card">
+      <img src="http://lorempixel.com/320/240/city/" imageViewer/>
+    <ion-card-content>
+      {{post.content}}
+    </ion-card-content>
+  </ion-card>
+</ion-content>

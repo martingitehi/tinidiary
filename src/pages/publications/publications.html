@@ -1,0 +1,37 @@
+<ion-header no-border style="margin-bottom: 2px;">
+  <ion-navbar color="light">
+    <button ion-button menuToggle>
+      <ion-icon name="menu" color="dark"></ion-icon>
+    </button>
+    <ion-buttons end>
+      <button ion-button clear icon-only>
+        <ion-icon name="more" color="dark"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-searchbar name="search" placeholder="Search item, stores, etc"></ion-searchbar>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div id="edgeless">
+    <div id="card" *ngFor="let file of files">
+      <div id="card-image">
+        <div id="img">
+          <img src="assets/imgs/{{file}}" imageViewer/>
+        </div>
+      </div>
+      <div id="details">
+        <ion-item no-lines>
+          <small>Conversations With Imaginary Friends</small>
+          <br />
+          <ion-badge style="margin-left:3px;" color="dark">
+            <small>{{1780 | currency:'KES':2}}</small>
+          </ion-badge>
+          <button item-right ion-button icon-only clear>
+            <ion-icon name="basket" color="secondary"></ion-icon>
+          </button>
+        </ion-item>
+      </div>
+    </div>
+  </div>
+</ion-content>

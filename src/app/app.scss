@@ -1,4 +1,4 @@
-// http://ionicframework.com/docs/theming/
+// http://ionicframework.com/docs/v2/theming/
 
 
 // App Global Sass
@@ -14,3 +14,116 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+@font-face{
+    font-family: 'Varela Round';
+    src: url('../assets/fonts/Varela-Round.woff2') format('woff2');
+    }
+
+    @font-face{
+        font-family: 'Cookie';
+        src: url('../assets/fonts/Cookie.woff2') format('woff2');
+        }
+     
+    *{
+    font-family: 'Varela Round';
+    }
+    
+    #footer{
+      text-align: center;
+    }
+
+    #edgeless{
+        margin:0% 0%;
+        padding:0%;
+    }
+
+    #headline{
+        font-family: 'Cookie', cursive;
+        font-size: larger;
+        font-weight: bolder;
+    }
+    
+    #img-wrap {
+        position: relative;
+        overflow: hidden;
+        border: 1.5px;
+        border-color: white;
+        height: auto;
+        width: 100%;
+        display: block;
+      }
+    
+    .title.title-md{
+      position:absolute;
+      left:50%;
+      top:0;
+      transform: translateX(-50%);
+      height: 100%;
+      width:70%;
+      text-align: center;
+    }
+    
+    #header{
+      margin: 0px;
+      padding: 3%;
+      background-color: map-get($colors, dark);
+      color: white;
+      font-size: 12pt;
+      text-align: center;
+    }
+    
+    #thumb{
+      border-radius: 5%;
+      margin:2px;
+      padding: 0px;
+    }
+    
+    
+    #sticker{
+      background-color: white;
+        padding:5px;
+        margin:0.3px;
+        text-align: center;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    
+    #sticker > h1{
+      font-size: 14pt;
+      color: map-get($colors, dark);
+      font-weight: normal;
+    }
+    
+    .title {
+      font-size: 14pt;
+      color: white;
+      font-weight: normal;
+      text-align: center;
+    }
+    
+    #dark{
+      background-color: map-get($colors, dark);
+    }
+    
+    #badge {
+      background-color: map-get($colors, hot);
+      color: white;
+      position: absolute;
+      bottom: 0px;
+      padding:5px;
+      margin:0px;
+      width:100%;
+      border-top-right-radius: 60%;
+      font-size: 12pt;
+      vertical-align: auto;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      opacity: 0.65;
+      filter: alpha(opacity=65);
+    }
+    
+    #item{
+      margin: 3px 1%;
+      box-shadow: 0px 4px 4px -4px rgba(0,0,0,0.2);
+    }

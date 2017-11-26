@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { RequestOptions, Http, Headers, Request, RequestMethod } from '@angular/http';
 import 'rxjs/add/operator/map';
+import * as _ from 'lodash';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'page-list',
@@ -9,27 +11,32 @@ import 'rxjs/add/operator/map';
 })
 export class ListPage {
   posts: any[];
-  instagramImages: any;
-  headers: HttpHeaders = new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*'
-  });
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http) { }
 
-  ionViewDidLoad(){
-    this.getWordpressPosts();
+  async ionViewDidLoad() {
+    await this.getWordpressPosts();
   }
 
-  getWordpressPosts() {
+  async getWordpressPosts(): Promise<any> {
     //get the Wordpress posts from API 
-    this.http.get('https://public-api.wordpress.com/rest/v1.1/sites/kushandcakes.wordpress.com/posts/?number=5', { headers: this.headers }).map((items: any) => {
-      console.log(items)
-      this.posts = items.posts;
-    });
+    await this.http.get('https://public-api.wordpress.com/rest/v1.1/sites/kushandcakes.wordpress.com/posts/')
+      .subscribe(res => {
+        console.log(res.json().posts)
+        this.posts = res.json().posts;
+        _.each(this.posts, (p) => {
+          console.log(this.makeArray(p));
+        })
+      }, (err => { console.error(err) }), () => { console.log('Posts fetched successfully.') });
   }
 
-  itemTapped(event, item) {
-
+  viewPost(event, post: any) {
+    this.navCtrl.push('PostDetailPage', { post: post });
+  }
+  makeArray(obj:object) {
+    let arr = Object.keys(obj).map((key) => { return obj[key]; });
+    // if(Object.keys('attachments')){
+    //   let arr:Array<any>= _.values(obj);
+    // }
   }
 }
