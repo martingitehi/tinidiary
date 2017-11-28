@@ -9,21 +9,32 @@ page-post-detail {
      box-shadow: -2px 8px 8px -8px rgba(0,0,0,0.7);
 }
 
-#card-image{
+#borderless-card{
+    width: 100%;    
+    margin:0% 0%;
+    padding:0%;
+}
+
+.card-image{
     position: relative;
     height: auto;
     width: 100%; 
     margin:0% 0%;
     padding:0%;
+    overflow: hidden;
+    display: block;
 }
 
-#img {
-  position: relative;
-  overflow: hidden;
-  height: 150px;
-  width: 100%;
-  display: block;
-}
+.img-wrapper {
+    position: relative;
+    padding-bottom: 100%;
+    overflow: hidden;
+    margin: 1px;
+    height: 100px;
+    width: 100%;
+    border-radius: 3%;
+    display: block;
+    }
 
 @media (min-width: 768px) {
     #cards{

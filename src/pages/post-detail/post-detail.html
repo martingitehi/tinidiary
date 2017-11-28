@@ -1,12 +1,10 @@
-<ion-header no-border>
+<ion-header>
   <ion-navbar color="light">
     <button ion-button menuToggle>
       <ion-icon name="menu" color="dark"></ion-icon>
     </button>
     <ion-title>
-      <small>{{post.title}}
-        <br> {{post.date | date }}
-      </small>
+      Post
     </ion-title>
     <ion-buttons end>
       <button ion-button clear icon-only>
@@ -16,12 +14,32 @@
   </ion-navbar>
 </ion-header>
 
-
-<ion-content id="cards">
-  <ion-card id="ion-card">
-      <img src="http://lorempixel.com/320/240/city/" imageViewer/>
+<ion-content>
+  <div id="borderless-card">
+    <img *ngIf="post.featured_image !==null" src="{{post.featured_image}}" />
     <ion-card-content>
-      {{post.content}}
+      <ion-card-title>
+        <h1 style="font-weight:bold; font-size:1.4em;">{{post.title}}</h1>
+        <small style="color:grey;">Published on {{post.date | date}} by {{post.author.name}}</small>
+      </ion-card-title>
+      <br>
+      <div id="content" [innerHTML]="post.content"></div>
+
+      <ion-item-divider color="light-alt" *ngIf="comments_no > 0">
+        <b>{{comments_no > 0 ? comments_no + ' comments': comments_no +' comment'}} {{ likes > 0 ? likes + ' likes' : ''}}
+        </b>
+      </ion-item-divider>
+      <ion-list color="light-alt" [virtualScroll]="comments">
+        <ion-item *virtualItem="let comment" text-wrap>
+          <ion-avatar item-start>
+            <img src="{{comment.author.avatar_URL}}" />
+          </ion-avatar>
+          <h4>{{comment.author.name}}</h4>
+          <div [innerHTML]="comment.content"></div>
+          <small>{{comment.date | date:'mediumDate'}}</small>
+        </ion-item>
+      </ion-list>
+
     </ion-card-content>
-  </ion-card>
+  </div>
 </ion-content>

@@ -1,11 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, ModalController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ListPage } from '../pages/list/list';
 import { InstagramPage } from '../pages/instagram/instagram';
 import { HollaPage } from '../pages/holla/holla';
 import { PublicationsPage } from '../pages/publications/publications';
+import { SplashPage } from '../pages/splash/splash';
 
 @Component({
   templateUrl: 'app.html'
@@ -17,7 +18,7 @@ export class Tini {
 
   pages: Array<{title: string, component: any, icon:string}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private modalCtrl:ModalController) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -35,10 +36,9 @@ export class Tini {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
-      this.splashScreen.hide();
+      let splash = this.modalCtrl.create(SplashPage);
+      splash.present();
     });
   }
 

@@ -9,12 +9,12 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {CallNumber} from '@ionic-native/call-number';
-import { API } from '../services/api.service';
 import { ListPageModule } from '../pages/list/list.module';
 import { PostDetailPageModule } from '../pages/post-detail/post-detail.module';
 import { HollaPageModule } from '../pages/holla/holla.module';
 import { PublicationsPageModule } from '../pages/publications/publications.module';
 import { InstagramPageModule } from '../pages/instagram/instagram.module';
+import { SplashPageModule } from '../pages/splash/splash.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,8 @@ import { InstagramPageModule } from '../pages/instagram/instagram.module';
     HollaPageModule,
     PostDetailPageModule,
     InstagramPageModule,
-    PublicationsPageModule,
+    PublicationsPageModule,   
+    SplashPageModule, 
     IonicModule.forRoot(Tini),
   ],
   bootstrap: [IonicApp],
@@ -36,7 +37,6 @@ import { InstagramPageModule } from '../pages/instagram/instagram.module';
   ],
   providers: [
     StatusBar,
-    API,
     CallNumber, 
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

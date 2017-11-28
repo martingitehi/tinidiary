@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the PublicationsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Book } from '../../interfaces/book.interface';
 
 @IonicPage()
 @Component({
@@ -14,15 +8,28 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'publications.html',
 })
 export class PublicationsPage {
- files:any[]=[];
+  books: Book[] = [];
+  names: string[] = ['Kevin Mwachiro', 'Daniel Asinze-Riba', 'Kennedy Omwamo', 'Rebecca Douglas', 'Janet Mock', 'Martin Gitehi', 'Jhene Aiko-Chilombo', 'Kiprop Kimutai', 'Karanja Nzisa'];
+  titles: string[] = [
+    'Brian and Ethan', 'Evening Tea', 'The well Gods', 'We the Animals',
+    'My Maasai', 'This Book is Gay', 'Loclomond Love', 'Tales of Heaven'
+  ];
+  filter: string;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewWillLoad() {
-    for (let i = 0; i < 15; i++) {
-      this.files.push(`files (${i+1}).jpg`);    
+  async ionViewWillLoad() {
+    for (let i = 0; i < 10; i++) {
+      await this.books.push({
+        name: `files (${i + 1}).jpg`,
+        type: 'book',
+        title: this.titles[Math.ceil(Math.random() * ((this.titles.length+1) - 1) + 1)],
+        for_sale: i % 2 == 0,
+        price: Math.ceil(Math.random() * (5000 - 500) + 500),
+        author: this.names[Math.ceil(Math.random() * ((this.names.length+1) - 1) + 1)]
+      });
     }
-    console.log(this.files)
+    console.table(this.books)
   }
 
 }

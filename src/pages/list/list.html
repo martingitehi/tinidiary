@@ -1,4 +1,4 @@
-<ion-header no-border>
+<ion-header style="margin-bottom:2px;">
   <ion-navbar color="light">
     <button ion-button menuToggle>
       <ion-icon name="menu" color="dark"></ion-icon>
@@ -6,7 +6,6 @@
     <ion-title>
       <h1 id="headline">
         Tinidiary
-        <!-- <br> kushandcakes.wordpress.com -->
       </h1>
     </ion-title>
     <ion-buttons end>
@@ -15,17 +14,27 @@
       </button>
     </ion-buttons>
   </ion-navbar>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="icons" color="secondary">
+      <ion-segment-button value="camera">
+        Newest
+      </ion-segment-button>
+      <ion-segment-button value="bookmark">
+        Most Read
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content id="cards" style="margin:0%; padding:0%; width:100%;">
-  <ion-list [virtualScroll]="posts">
-    <ion-card id="ion-card" (tap)="viewPost($event, post)" *virtualItem="let post">
+<ion-content id="cards" style="margin:2px 0% 0% 0%; padding:0%; width:100%;">
+  <ion-list [virtualScroll]="posts" [approxItemHeight]=" '500px' " [bufferRatio]="3.1">
+    <ion-card id="ion-card" tappable (tap)="viewPost($event, post)" *virtualItem="let post">
       <ion-card-header>
         <ion-item no-lines>
           <ion-avatar item-start>
             <ion-img [src]="post.author.avatar_URL"></ion-img>
           </ion-avatar>
-          <h2>{{post.title}}</h2>
+          <h2 [innerHTML]="post.title"></h2>
           <ion-badge color="light">
             <small>{{post.author.name}} &middot; {{post.date | date:'mediumDate'}}</small>
           </ion-badge>
@@ -34,22 +43,21 @@
           </button>
         </ion-item>
       </ion-card-header>
-      <img src="http://lorempixel.com/320/240/city/" />
+      <img src="{{post.featured_image !== null ? post.featured_image : 'https://loremflickr.com/680/400/city'}}" />
       <ion-card-content>
-        <h4 #excerpt>
-          {{post.excerpt}}
-        </h4>
+        <div [innerHTML]="post.excerpt"></div>
+        <br>
+        <ion-row>
+            <ion-item>
+              <button ion-button item-left icon-only clear small>
+                <ion-icon name="share-alt" large color="dark"></ion-icon>
+              </button>
+              <button ion-button icon-only item-right clear small>
+                <ion-icon name="bookmark" large color="dark"></ion-icon>
+              </button>
+            </ion-item>
+          </ion-row>
       </ion-card-content>
-      <ion-row>
-        <ion-item>
-          <button ion-button item-left icon-only clear small>
-            <ion-icon name="share-alt" color="dark"></ion-icon>
-          </button>
-          <button ion-button icon-only item-right clear small>
-            <ion-icon name="bookmark" color="dark"></ion-icon>
-          </button>
-        </ion-item>
-      </ion-row>
     </ion-card>
   </ion-list>
 </ion-content>
