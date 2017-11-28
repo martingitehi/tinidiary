@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {RequestOptions,Http, Headers, Request, RequestMethod} from '@angular/http';
+import { Http } from '@angular/http';
 
 @IonicPage()
 @Component({
@@ -13,7 +13,7 @@ export class InstagramPage {
   }
 
   async ionViewDidLoad() {
-   await this.getInstagramImages();
+    await this.getInstagramImages();
   }
 
   async getInstagramImages() {

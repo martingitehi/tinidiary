@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { RequestOptions, Http, Headers, Request, RequestMethod } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { Http } from '@angular/http';
 import * as _ from 'lodash';
-import { Observable } from 'rxjs/Observable';
-import { HtmlParser } from '@angular/compiler';
 
 @Component({
   selector: 'page-list',
@@ -17,8 +14,9 @@ export class ListPage {
 
   async ionViewDidLoad() {
     await this.getWordpressPosts().then((posts: any) => {
-      _.each(posts, (post) => {
-      
+      _.each(posts, (post: any) => {
+        let imageUrl: boolean = post.content.indexOf('<img src');
+        console.log(imageUrl)
       });
     });
   }

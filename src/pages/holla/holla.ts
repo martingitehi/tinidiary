@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
 import { CallNumber } from '@ionic-native/call-number';
 
 @IonicPage()
@@ -20,14 +20,9 @@ export class HollaPage {
     ]
   }
 
-  callPhone(context: string) {
-    if (context === 'mobile') {
-      this.call.callNumber('+254707912063', true).then((c: any) => {
-        //succeeded calling the number
-      }, (err) => {
-        console.error(err)
-      })
-    }
+  callPhone(item: any) {
+    if (item.name === "Mobile")
+      this.call.callNumber(item.id, true);
   }
 
 }
