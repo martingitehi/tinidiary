@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage} from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
 import { ViewController } from 'ionic-angular/navigation/view-controller';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -10,19 +10,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   templateUrl: 'splash.html',
 })
 export class SplashPage {
-
-  constructor(public viewCtrl:ViewController, private splash:SplashScreen) {
-  }
-
+  logo: string = `assets/imgs/svg (${Math.ceil(Math.random() * (5 - 1) + 1)}).svg`;
+  constructor(public viewCtrl: ViewController, private splash: SplashScreen) { }
 
   ionViewDidEnter() {
-    
-       this.splash.hide();
-    
-       setTimeout(() => {
-         this.viewCtrl.dismiss();
-       }, 4000);
-    
-     }
-
+    this.splash.hide();
+    setTimeout(() => {
+      this.viewCtrl.dismiss();
+    }, 3000);
+  }
 }

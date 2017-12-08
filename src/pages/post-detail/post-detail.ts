@@ -9,11 +9,19 @@ import { Http } from '@angular/http';
 })
 export class PostDetailPage {
   post: any;
+  banner: string;
   comments: any[];
-  comments_no:number;
-  likes:number;
+  comments_no: number;
+  likes: number;
   constructor(public http: Http, public navParams: NavParams) {
     this.post = this.navParams.get('post');
+    if (this.post.featured_image == null && this.post.attachment_count > 0) {
+      this.post.featured_image = Object.keys(this.post.attachments)
+        .map(k => this.post.attachments[k].URL)[0]
+    }
+    else if (this.post.featured_image !== null && this.post.attachment_count == 0) {
+      this.post.featured_image = 'https://loremflickr.com/600/480/city';
+    }
   }
 
   ionViewDidLoad() {

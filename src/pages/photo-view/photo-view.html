@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar color="light">
+    <button ion-button menuToggle>
+      <ion-icon name="menu" color="dark"></ion-icon>
+    </button>
+    <ion-title>
+      Photo
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button clear icon-only>
+        <ion-icon name="more" color="dark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div id="slider" *ngIf="photo.type==='carousel'">
+    <ion-slides pager>
+      <ion-slide class="img-wrapper" *ngFor="let image of photo.carousel_media">
+        <img src="{{image.images.standard_resolution.url}}" imageViewer />
+      </ion-slide>
+    </ion-slides>
+  </div>
+  <div id="borderless-card">
+    <img src="{{photo.images.standard_resolution.url}}" *ngIf="photo.type==='image'" imageViewer />
+    <ion-card-content>
+      <br />
+      <span>
+        <ion-item no-lines>
+          <ion-icon color="danger" name="heart"></ion-icon>{{photo.likes.count}} likes <ion-icon name="chatbubbles" color="dark"></ion-icon>{{photo.comments.count}} comments
+        </ion-item>
+      </span>
+      <br />
+      <div [innerHTML]="photo.caption.text"></div>
+      <br />
+    </ion-card-content>
+  </div>
+  <ion-item-divider color="light-alt" *ngIf="comments_no > 0">
+    <b>{{photo.comments.count > 0 ? photo.comments.count + ' comments': ''}}
+    </b>
+  </ion-item-divider>
+  <!-- <ion-list color="light-alt" *ngFor="let comment of comments">
+    <ion-item text-wrap>
+      <ion-avatar item-start>
+        <img src="{{comment.profile_picture}}" />
+      </ion-avatar>
+      <h4>{{comment.username}}</h4>
+      <div [innerHTML]="comment.text"></div>
+      <small>{{comment.created_time | date:'mediumDate'}}</small>
+    </ion-item>
+  </ion-list> -->
+</ion-content>

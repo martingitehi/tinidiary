@@ -7,6 +7,7 @@ import { InstagramPage } from '../pages/instagram/instagram';
 import { HollaPage } from '../pages/holla/holla';
 import { PublicationsPage } from '../pages/publications/publications';
 import { SplashPage } from '../pages/splash/splash';
+import { FacebookPage } from '../pages/facebook/facebook';
 
 @Component({
   templateUrl: 'app.html'
@@ -24,12 +25,11 @@ export class Tini {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Wordpress', component: ListPage, icon:'logo-wordpress' },
-      { title: 'Facebook', component: ListPage, icon: 'logo-facebook' },
+      { title: 'Facebook', component: FacebookPage, icon: 'logo-facebook' },
       { title: 'Twitter', component: ListPage, icon:'logo-twitter' },
       { title: 'Instagram', component: InstagramPage, icon:'logo-instagram' },
-      { title: 'Medium', component: ListPage, icon:'paper' },
-      { title: 'Books', component: PublicationsPage, icon:'paper' },
-      { title: 'Contact', component: HollaPage, icon:'contact' }
+      { title: 'Books', component: PublicationsPage, icon:'book' },
+      { title: 'Contact', component: HollaPage, icon:'call' }
     ];
 
   }

@@ -5,7 +5,7 @@
     </button>
     <ion-title>
       <h1 id="headline">
-        Tinidiary
+        {{site?.name}}
       </h1>
     </ion-title>
     <ion-buttons end>
@@ -14,13 +14,10 @@
       </button>
     </ion-buttons>
   </ion-navbar>
-  <ion-toolbar>
-    <ion-segment [(ngModel)]="icons" color="secondary">
-      <ion-segment-button value="camera">
-        Newest
-      </ion-segment-button>
-      <ion-segment-button value="bookmark">
-        Most Read
+  <ion-toolbar color="light">
+    <ion-segment *ngIf="categories" [(ngModel)]="category" color="dark">
+      <ion-segment-button *ngFor="let category of categories" value="{{category.name}}" click="filterByCategory()">
+        {{category.name}}
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
@@ -43,20 +40,22 @@
           </button>
         </ion-item>
       </ion-card-header>
-      <img src="{{post.featured_image !== null ? post.featured_image : 'https://loremflickr.com/680/400/city'}}" />
+      <div id="head-image">
+        <img src="{{post.featured_image}}" />
+      </div>
       <ion-card-content>
         <div [innerHTML]="post.excerpt"></div>
         <br>
         <ion-row>
-            <ion-item>
-              <button ion-button item-left icon-only clear small>
-                <ion-icon name="share-alt" large color="dark"></ion-icon>
-              </button>
-              <button ion-button icon-only item-right clear small>
-                <ion-icon name="bookmark" large color="dark"></ion-icon>
-              </button>
-            </ion-item>
-          </ion-row>
+          <ion-item>
+            <button ion-button item-left icon-only clear small>
+              <ion-icon name="share-alt" large color="dark"></ion-icon>
+            </button>
+            <button ion-button icon-only item-right clear small>
+              <ion-icon name="bookmark" large color="dark"></ion-icon>
+            </button>
+          </ion-item>
+        </ion-row>
       </ion-card-content>
     </ion-card>
   </ion-list>

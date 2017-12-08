@@ -4,28 +4,36 @@
       <ion-icon name="menu" color="dark"></ion-icon>
     </button>
     <ion-buttons end>
-      <button ion-button clear icon-only>
-        <ion-icon name="more" color="dark"></ion-icon>
+      <button ion-button clear icon-only click=checkout()>
+        <ion-icon name="basket" color="dark"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-searchbar name="filter" [(ngModel)]="filter" placeholder="Search item, stores, etc"></ion-searchbar>
+    <ion-searchbar name="filter" [(ngModel)]="filter" placeholder="Search titles, authors, etc"></ion-searchbar>
   </ion-navbar>
+  <ion-toolbar color="light">
+    <ion-segment [(ngModel)]="category" color="dark">
+      <ion-segment-button value="all" click="filterByCategory('all')">
+        All
+      </ion-segment-button>
+      <ion-segment-button value="free" click="filterByCategory('free')">
+        Free
+      </ion-segment-button>
+      <ion-segment-button value="paid" click="filterByCategory('paid')">
+        Paid
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div id="cards">
     <ion-grid>
-      <ion-row wrap-reverse *ngFor="let book of books | filter:filter">
+      <ion-row wrap *ngFor="let book of books | filterby:filter">
         <ion-col col-width-50>
           <div id="card">
-            <ion-card-header>
-              <ion-item no-lines item-text-wrap>
-               <small>{{book.author}}</small>
-              </ion-item>
-            </ion-card-header>
             <div id="card-image">
               <div id="img">
-                <img src="assets/imgs/{{book.name}}" imageViewer/>
+                <img src="assets/imgs/{{book.name}}" tappable (tap)="openDocument()"/>
               </div>
             </div>
             <div id="details">

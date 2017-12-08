@@ -24,6 +24,10 @@ export class InstagramPage {
     }, (err => { console.error(err) }), () => { console.log('Photos fetched successfully.') });
   }
 
+  viewImage(photo: any) {
+    this.navCtrl.push('PhotoViewPage', { photo: photo });
+  }
+
 
 
 }

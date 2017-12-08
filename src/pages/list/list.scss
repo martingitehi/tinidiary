@@ -10,16 +10,13 @@ page-list {
          flex: 1 1 auto;
      }
      
-     #img-wrapper {
-       position: relative;
-       padding-bottom: 100%;
-       overflow: hidden;
-       margin: 1px;
-       height: 100px;
-       width: 100%;
-       border-radius: 3%;
-       display: block;
-       }
+     #head-image {
+        position: relative;
+        overflow: hidden;
+        height: 200px;
+        width: 100%;
+        display: block;
+      }
      
      #img-wrap {
          position: relative;
